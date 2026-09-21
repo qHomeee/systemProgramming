@@ -79,11 +79,38 @@ void delete_massive(int* arr){
         printf("пустой массив");
     }
     smart_log(*arr);
-    free(*arr);
-    *arr = NULL;
+    free(arr);
+    arr = NULL;
 }
 
+int** init_triangle_massive(int* len){
+    smart_log(*len);
+    int**arr = calloc(*len,sizeof(int*));
+    smart_log(*arr);
+    for (int i = 0; i < *len; i++)
+    {
+        arr[i] = calloc(i+1, sizeof(int));
+        for (int  j = 0; j < i+1; j++)
+        {
+            arr[i][j] = j;
+        }
+        
+    }
+    return arr;
+}
 
+void print_triangle_massive(int ** triangle, int*len){
+    smart_log(*triangle);
+    for (int i = 0; i < *len; i++)
+    {
+        for (int j = 0; j < i+1; j++)
+        {
+            printf("%3d",triangle[i][j]);
+        }
+        printf("\n");
+    }
+    
+}
 
 int main(){
 
@@ -108,7 +135,17 @@ int main(){
                     smart_log(*mas);
                     print_array(mas,*len);
                     delete_massive(mas);
-                    break;
+                break;
+
+                case 3:
+                    printf("ввдеите длину массива: ");
+                    int*l = calloc(1,sizeof(int));
+                    scanf("%d",l);
+                    smart_log(*l);
+                    int**arr = init_triangle_massive(l);
+                    smart_log(*arr);
+                    print_triangle_massive(arr,l);
+                break;
             }
     }
 
