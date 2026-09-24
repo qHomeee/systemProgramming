@@ -6,3 +6,5 @@
 
 # Локальные настройки VS Code
 .vscode/
+*.dSYM/
+delegates/main
