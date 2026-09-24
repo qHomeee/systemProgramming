@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "stdio.h"
-#include "malloc.h"
 #include "stdlib.h"
 
 
@@ -30,12 +29,13 @@ int main()
 
     Operation x = my_substraction;
     int* y = x(5,4,2);
+    printf("первое задание\n");
     for (int i = 0; i < 2; i++)
     {
         printf("%d\n", y[i]);
     }
     
-
+    printf("второе задание\n");
     typedef Operation Operations[3];
     Operations arr;
     arr[0] = my_substraction;
