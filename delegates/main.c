@@ -22,6 +22,46 @@ int* my_substraction(int a, int b, int c){
     return result;
 }
 
+void print_arr(int** arr, int n){
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("%3d", arr[i][j]);
+        }
+        printf("\n");
+    }
+    
+}
+
+
+void init_arr(int** arr, int n){
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = calloc(n,sizeof(int*));
+        for (int  j = 0; j < n; j++)
+        {
+            arr[i][j] = rand() %100;
+        }
+        
+    }
+    
+}
+
+
+
+typedef void (*Delegate) (int**, int);
+typedef struct DelegateArray{ 
+    Delegate functions[10];
+    int count;
+    
+   }delegateArray;
+
+
+void add_func( delegateArray*array, Delegate func){
+        array->functions[array->count]= func;
+        array->count++;
+}
 
 int main()
 {
@@ -67,7 +107,16 @@ int main()
                 
         }
     }
+
+    printf("задание три\n");
     
+    delegateArray mas;
+    mas.count = 0;
+    add_func(&mas, print_arr);
+    add_func(&mas, init_arr);
+    int ** ar;
+    mas.functions[1](ar,5);
+    mas.functions[0](ar,5);
     
 
 }
