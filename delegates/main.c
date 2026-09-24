@@ -1,18 +1,18 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "stdio.h"
-#include "mm_malloc.h"
+#include "malloc.h"
 #include "stdlib.h"
 
 
 
 int*  my_type_addition(int a, int b, int c){
+    int* result = calloc(1, sizeof(int));
     if(c == 0){
-        int* result = calloc(1, sizeof(int));
         *result = 0;
         return result;
     }
-    int *result = (a+b)/c;
+    *result=(a+b)/c;
     return result;
 }
 
@@ -47,18 +47,18 @@ int main()
         int* y;
         switch(i){
             case 0:
-                y =  arr[i];
+                y = arr[i](5,3,4);
                 for (int j = 0; j < 2; j++)
                 {
                     printf("%d\n", y[j]);
                 }
                 continue;
             case 1:
-                y = arr[i];
-                printf("%d\n",y);
+                 y = arr[i](0, 0, 0);
+                printf("%d\n",*y);
                 continue;
             case 2:
-                y =  arr[i];
+                y = arr[i](5, 4, 2);
                 for (int j = 0; j < 2; j++)
                 {
                     printf("%d\n", y[j]);
