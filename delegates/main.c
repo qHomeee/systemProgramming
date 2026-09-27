@@ -51,17 +51,50 @@ void init_arr(int** arr, int n){
 
 
 typedef void (*Delegate) (int**, int);
+
 typedef struct DelegateArray{ 
-    Delegate functions[10];
     int count;
+    Delegate functions[10];
     
-   }delegateArray;
+}delegateArray;
+
+
 
 
 void add_func( delegateArray*array, Delegate func){
         array->functions[array->count]= func;
         array->count++;
 }
+void delete_functions(delegateArray*array, Delegate func)
+{
+        int flag = 0;
+        int index = 0;
+        for (int i = 0; i < array->count; i++)
+        {
+            if(array->functions[i] == func){
+                array->functions[i] = NULL;
+                flag =1;
+                index = i;
+
+            }
+        }
+    if(array->functions[index+1] != NULL){
+        array->functions[index] = array->functions[index+1];
+        array->count--;
+    }   
+        if(flag == 1)
+        {
+            printf("Функция удалена");
+        }
+        else if(flag == 0)
+        {
+            printf("Не нашло функции");
+        }
+        
+           
+}
+
+
 
 int main()
 {
@@ -114,9 +147,11 @@ int main()
     mas.count = 0;
     add_func(&mas, print_arr);
     add_func(&mas, init_arr);
+    add_func(&mas, init_arr);
     int ** ar;
     mas.functions[1](ar,5);
     mas.functions[0](ar,5);
     
+    delete_functions(&mas,init_arr);
 
 }
