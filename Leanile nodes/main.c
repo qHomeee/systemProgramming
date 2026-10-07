@@ -28,22 +28,35 @@ node* create_list(int arr[], int size){
                 head = new_node;
                 current = new_node;
             }
-            
+            else{
             current->next = new_node;
             current = new_node;
-            
+            }
             
         }
         return head;
 }
 
 
-int delete_list(node* list){
-    
+void delete_list(node** list){
+    node*current = *list;
+    node* next = NULL;
+    while(current != NULL)
+    {
+        next = current->next;
+        free(current);
+        current = NULL;
+        current = next;
+    }
+    *list = NULL;
+        
 }
 
 
 void print_node(node* list){
+    if(list == NULL){
+        printf("list is empty");
+    }
     node* current = list;
     while(current != NULL)
     {
@@ -58,4 +71,6 @@ int main()
     int arr[] = {5,6,2,4,1};
     node* l = create_list(arr,5);
     print_node(l);
+    delete_list(&l);
+   print_node(l);
 }
