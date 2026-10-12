@@ -53,6 +53,31 @@ void delete_list(node** list){
 }
 
 
+node* insert_value(node* list, int value, int index){
+    node* new_node = calloc(1,sizeof(node));
+    new_node->chislo = value;
+    new_node->number = index;
+    new_node->next = NULL;
+    node* current = list;
+    node* prev =NULL;
+    
+    while (current != NULL && current->number != index)
+    {
+    prev = current;
+    current = current->next;
+    }
+    new_node->next = current;
+    prev->next = new_node;
+    current = new_node->next;
+    while(current != NULL){
+        
+        current->number++;
+        current = current->next;
+    }
+    
+    return list;
+}
+
 void print_node(node* list){
     if(list == NULL){
         printf("list is empty");
@@ -71,6 +96,7 @@ int main()
     int arr[] = {5,6,2,4,1};
     node* l = create_list(arr,5);
     print_node(l);
-    delete_list(&l);
-   print_node(l);
+    l = insert_value(l,124,5);
+    printf("dsads\n");
+    print_node(l);
 }
