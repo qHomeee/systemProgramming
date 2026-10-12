@@ -100,6 +100,30 @@ node* insert_value(node* list, int value, int index){
 
 
 
+void swap_elems(node* list, int first_index, int second_index)
+{
+    if(first_index > second_index)
+    {
+        int temp = 0;
+        temp = first_index;
+        first_index = second_index;
+        second_index = temp;
+    }
+
+    node* current1 = list;
+    node* current2 = list;
+    node* prev1 = NULL;
+    node* prev2 = NULL;
+    while(current1 != NULL)
+    {
+        if(current1->number == first_index)
+        {
+            if(prev1->)    
+        }
+        
+    }
+}
+
 void print_node(node* list){
     if(list == NULL){
         printf("list is empty");
