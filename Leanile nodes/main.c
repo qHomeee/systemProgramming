@@ -60,23 +60,45 @@ node* insert_value(node* list, int value, int index){
     new_node->next = NULL;
     node* current = list;
     node* prev =NULL;
-    
+    if(index == 0)
+    {
+        return list;
+    }
+    if(index == 1)
+    {
+        current = list;
+        new_node->next = current; 
+        list = new_node;
+        current = new_node->next;
+        while(current != NULL)
+        {
+            current->number++;
+            current = current->next;
+        }
+
+    }
+   else
+   {
     while (current != NULL && current->number != index)
     {
     prev = current;
     current = current->next;
     }
+    
     new_node->next = current;
     prev->next = new_node;
     current = new_node->next;
-    while(current != NULL){
+    while(current != NULL)
+    {
         
         current->number++;
         current = current->next;
     }
-    
+}
     return list;
 }
+
+
 
 void print_node(node* list){
     if(list == NULL){
@@ -96,7 +118,7 @@ int main()
     int arr[] = {5,6,2,4,1};
     node* l = create_list(arr,5);
     print_node(l);
-    l = insert_value(l,124,5);
+    l = insert_value(l,124,0);
     printf("dsads\n");
     print_node(l);
 }
