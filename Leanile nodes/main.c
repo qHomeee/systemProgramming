@@ -100,28 +100,81 @@ node* insert_value(node* list, int value, int index){
 
 
 
-void swap_elems(node* list, int first_index, int second_index)
+node* swap_elems(node* list, int first_index, int second_index)
 {
-    if(first_index > second_index)
+   
+    if (list == NULL || first_index < 1 || second_index < 1)
+        return list;
+
+    if (first_index == second_index)
+        return list;
+
+   
+    if (first_index > second_index)
     {
-        int temp = 0;
-        temp = first_index;
+        int temp = first_index;
         first_index = second_index;
         second_index = temp;
     }
 
+   
     node* current1 = list;
-    node* current2 = list;
     node* prev1 = NULL;
-    node* prev2 = NULL;
-    while(current1 != NULL)
+
+    while (current1 != NULL && current1->number != first_index)
     {
-        if(current1->number == first_index)
-        {
-            if(prev1->)    
-        }
-        
+        prev1 = current1;
+        current1 = current1->next;
     }
+
+    node* current2 = list;
+    node* prev2 = NULL;
+
+    while (current2 != NULL && current2->number != second_index)
+    {
+        prev2 = current2;
+        current2 = current2->next;
+    }
+
+   
+    if (current1 == NULL || current2 == NULL)
+        return list;
+
+    if (current1->next == current2)
+    {
+        if (prev1 != NULL)
+            prev1->next = current2;
+        else
+            list = current2;
+
+        current1->next = current2->next;
+        current2->next = current1;
+    }
+ 
+    else
+    {
+        if (prev1 != NULL)
+            prev1->next = current2;
+        else
+            list = current2;
+
+        if (prev2 != NULL)
+            prev2->next = current1;
+        else
+            list = current1;
+
+        node* temp = current1->next;
+
+        current1->next = current2->next;
+        current2->next = temp;
+    }
+
+    
+    int temp_number = current1->number;
+    current1->number = current2->number;
+    current2->number = temp_number;
+
+    return list;
 }
 
 void print_node(node* list){
@@ -144,5 +197,8 @@ int main()
     print_node(l);
     l = insert_value(l,124,0);
     printf("dsads\n");
+    print_node(l);
+    printf("dsads\n");
+    l = swap_elems(l,2,4);
     print_node(l);
 }
