@@ -22,25 +22,3 @@ int main()
 
 
 
-int addition(int a, int b)
-{
-     return a+b;
-     
-}
-
-int minus(int a,int b )
-{
-     return a -b;
-
-}
-
-int plural(int a, int b){
-    return a*b;
-}
-
-
-
-double division(double a, double b)
-{
-    return a/b;
-}
