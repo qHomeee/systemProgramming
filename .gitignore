@@ -8,3 +8,7 @@
 .vscode/
 *.dSYM/
 delegates/main
+
+
+
+*.txt
