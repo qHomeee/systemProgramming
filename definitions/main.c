@@ -15,7 +15,6 @@
 
 int main(void) {
 
-    // Предыдущее задание
     FILE* f = fopen(FILE_NAME, "w");
 
     if (f != NULL) {
