@@ -9,6 +9,8 @@
 *.dSYM/
 delegates/main
 
-
+/delegates/main
+/signals/main
+/signals/sender
 
 *.txt
