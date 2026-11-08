@@ -12,5 +12,6 @@ delegates/main
 /delegates/main
 /signals/main
 /signals/sender
-
+/processLinux/main
+/processLinux/newProcess
 *.txt
